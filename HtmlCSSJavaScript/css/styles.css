@@ -5,19 +5,26 @@
     --color-light-blue: #2965F1;
     --color-minion-yellow: #F0DB4F;
     --color-dark-charcoal: #323330;
+    --color-light-gray: #EBEBEB;
 }
 
 * {
+    background-color: #323330;
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
     font-size: xxx-large;
-    color: var(--color-dark-charcoal);
+    color: var(--color-light-gray);
 }
 
 @media (max-width: 500px) {
-.screen {font-size: 80px; }
-.button {font-size: xxx-large; }
+    .screen {
+        font-size: 80px;
+    }
+
+    .button {
+        font-size: xxx-large;
+    }
 }
 
 .box {
@@ -30,7 +37,7 @@
     margin: 10px;
     padding: 10px;
     text-align: right;
-    box-shadow: 1px 1px 1px 1px #ccc;
+    box-shadow: 1px 1px 1px 1px;
     font-size: 80px;
 }
 
@@ -43,14 +50,17 @@
 }
 
 button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: .26s;
+    background-color: transparent;
+    border: 1px solid var(--color-dark-blue)
 }
 
 button:active {
-    background-color: ;
-    transform: scale(1.25);
+    background-color: var(--color-light-blue);
+    transform: scale(1.15);
     transition: cubic-bezier(0.25, 1.5, 0.5, 1);
+    border: 5px solid var(--color-dark-blue)
 }
 
 button {
@@ -59,11 +69,25 @@ button {
     margin: 5;
     border: none;
     transition: .25s ease-in 0.15s;
-    background-color: ;
+    background-color: var(--color-dark-blue);
 }
 
 button.c {
-    background-color: 
+    background-color: var(--color-dark-orange);
+}
+
+button.c:hover {
+    transform: scale(1.05);
+    transition: .26s;
+    background-color: transparent;
+    border: 1px solid var(--color-dark-orange)
+}
+
+button.c:active {
+    background-color: var(--color-light-orange);
+    transform: scale(1.15);
+    transition: cubic-bezier(0.25, 1.5, 0.5, 1);
+    border: 5px solid var(--color-dark-orange)
 }
 
 button.zero {
@@ -72,4 +96,22 @@ button.zero {
 
 button.equals {
     grid-row: span 2;
+    background-color: var(--color-minion-yellow);
+    color: var(--color-dark-charcoal);
+}
+
+button.equals:hover {
+    transform: scale(1.05);
+    transition: .26s;
+    background-color: transparent;
+    border: 1px solid var(--color-minion-yellow);
+    color: var(--color-minion-yellow);
+}
+
+button.equals:active {
+    background-color: var(--color-minion-yellow);
+    transform: scale(1.15);
+    transition: cubic-bezier(0.25, 1.5, 0.5, 1);
+    border: 5px solid var(--color-dark-charcoal);
+    color: var(--color-dark-charcoal);
 }
