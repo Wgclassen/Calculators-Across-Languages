@@ -1,3 +1,5 @@
+import Decimal from './decimal.mjs';
+
 // - DOM - //
 const screenNumber = document.querySelector(".screen");
 const numberButton = document.querySelectorAll(".number");
@@ -26,13 +28,13 @@ numberButton.forEach(button => {
     button.addEventListener("click", () => addNumber(button));
 });
 cButton.addEventListener("click", clearScreen);
-// plusButton.addEventListener("click", addOperation);
 plusButton.addEventListener("click", () => setOperation(Operators.PLUS));
 minusButton.addEventListener("click", () => setOperation(Operators.MINUS));
 timesButton.addEventListener("click", () => setOperation(Operators.TIMES));
 divideButton.addEventListener("click", () => setOperation(Operators.DIVIDE));
 equalsButton.addEventListener("click", performOperation);
 deleteButton.addEventListener("click", erase);
+decimalButton.addEventListener("click", addDecimal);
 
 
 // - Functions - //
@@ -52,16 +54,22 @@ function addNumber(button) {
 
 function performOperation() {
     if (lastOperator == Operators.PLUS) {
-        screenNumber.textContent = parseFloat(storedNumber) + parseFloat(screenNumber.textContent);
+        screenNumber.textContent = new Decimal(storedNumber).plus(new Decimal(screenNumber.textContent)).toString();
     }
     if (lastOperator == Operators.MINUS) {
-        screenNumber.textContent = parseFloat(storedNumber) - parseFloat(screenNumber.textContent);
+        screenNumber.textContent = new Decimal(storedNumber).minus(new Decimal(screenNumber.textContent)).toString();
     }
     if (lastOperator == Operators.TIMES) {
-        screenNumber.textContent = parseFloat(storedNumber) * parseFloat(screenNumber.textContent);
+        screenNumber.textContent = new Decimal(storedNumber).times(new Decimal(screenNumber.textContent)).toString();
     }
     if (lastOperator == Operators.DIVIDE) {
-        screenNumber.textContent = parseFloat(storedNumber) / parseFloat(screenNumber.textContent);
+        screenNumber.textContent = new Decimal(storedNumber).div(new Decimal(screenNumber.textContent)).toString();
+    }
+}
+
+function addDecimal() {
+    if (!screenNumber.textContent.includes(".")) {
+        screenNumber.textContent += ".";
     }
 }
 
